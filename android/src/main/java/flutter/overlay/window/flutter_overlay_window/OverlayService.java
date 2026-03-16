@@ -140,6 +140,11 @@ public class OverlayService extends Service implements View.OnTouchListener {
                 int height = call.argument("height");
                 boolean enableDrag = call.argument("enableDrag");
                 resizeOverlay(width, height, enableDrag, result);
+            } else if (call.method.equals("openMainApp")) {
+                Intent newIntent = new Intent();
+                newIntent.setClassName("com.hertzaz.hertz_driver", "com.hertzaz.hertz_driver.MainActivity");
+                newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(newIntent);
             }
         });
         overlayMessageChannel.setMessageHandler((message, reply) -> {

@@ -162,6 +162,11 @@ class FlutterOverlayWindow {
     return _res ?? false;
   }
 
+  static Future<bool?> openMainApp() async {
+    final bool? _res = await _overlayChannel.invokeMethod<bool?>('openMainApp');
+    return _res;
+  }
+
   /// Dispose overlay stream
   static void disposeOverlayListener() {
     _controller.close();
